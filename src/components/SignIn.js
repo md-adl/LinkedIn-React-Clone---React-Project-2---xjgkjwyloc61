@@ -19,8 +19,8 @@ import { useStateProvider } from "../utils/StateProvider";
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [{ token }, dispatch] = useStateProvider();
-  const [email, setEmail] = useState("aju6697@gmail.com");
-  const [password, setPassword] = useState("11111111");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
