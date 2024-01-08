@@ -171,9 +171,9 @@ const NavBar = () => {
                 placeholder="Search..."
                 sx={{
                   height: "45px",
-                  mt: "0px",
+                  mt: "7px",
                   ml: "5px",
-                  pb: "9px",
+
                   background: "#edf3f8",
                 }}
                 InputProps={{

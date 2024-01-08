@@ -8,11 +8,7 @@ import axios from "axios";
 
 function Forgot() {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [userName, SetUserName] = useState("");
-  const [CurrPassword, SetCurrPassword] = useState("");
-  const [newPassword, setnewPassword] = useState("");
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  
 
   const projectId = "f104bi07c490";
 
