@@ -31,10 +31,9 @@ const NavBar = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 980);
   const [searchInputVisible, setSearchInputVisible] = useState(false);
   const [search, setSearch] = useState("");
-  const [{ posts, userName }] = useStateProvider();
+  const [ {posts, userName }] = useStateProvider();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -84,10 +83,11 @@ const NavBar = () => {
     const searchValue = e.target.value.toLowerCase();
     setSearch(searchValue);
     const updatedPost1 = posts.filter((post) =>
-      post.channel.name.toLowerCase().includes(searchValue),
+      post?.channel?.name.toLowerCase().includes(searchValue),
     );
+
     const updatedPost2 = posts.filter((post) =>
-      post.author.name.toLowerCase().includes(searchValue),
+      post?.author?.name.toLowerCase().includes(searchValue),
     );
     const result = updatedPost1.concat(updatedPost2);
     console.log(updatedPost1);
