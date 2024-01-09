@@ -134,14 +134,6 @@ function SignIn() {
           label="Password"
           placeholder="password"
           sx={{ mt: "10px" }}></OutlinedInput>
-        <Link
-          to="/forgot"
-          style={{ textDecoration: "none", marginTop: "15px" }}>
-          <Typography variant="h4" fontSize="17px">
-            Update password
-          </Typography>
-        </Link>
-
         <Button
           onClick={handleLogin}
           variant="contained"

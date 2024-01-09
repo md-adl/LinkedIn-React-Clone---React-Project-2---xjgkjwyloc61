@@ -352,9 +352,9 @@ const NavBar = () => {
                   Try Premium for free
                 </MenuItem>
                 <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
-                {/* <MenuItem onClick={() => navigate("/forgot")}>
+                <MenuItem onClick={() => navigate("/forgot")}>
                   Update Password?
-                </MenuItem> */}
+                </MenuItem>
               </Popover>
             </ToggleButtonGroup>
           </Stack>
