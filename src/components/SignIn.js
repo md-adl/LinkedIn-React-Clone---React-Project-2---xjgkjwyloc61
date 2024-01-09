@@ -75,6 +75,17 @@ function SignIn() {
   };
 
   const handleLogin = () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please provide a valid email address.");
+    return;
+  }
+
+  // Validate password
+  if (password.trim() === "") {
+    alert("Please enter a password.");
+    return;
+  }
     const bodyContent = JSON.stringify({
       email: email,
       password: password,

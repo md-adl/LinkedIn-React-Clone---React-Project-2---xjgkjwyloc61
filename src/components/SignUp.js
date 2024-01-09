@@ -75,6 +75,23 @@ function SignUp() {
     }
   };
   const handleSubmit = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please provide a valid email address.");
+    return;
+  }
+
+  // Validate name
+  if (userName.trim() === "") {
+    alert("Please enter a valid name.");
+    return;
+  }
+
+  // Validate password
+  if (password.length < 8) {
+    alert("Password should contain more than 8 characters.");
+    return;
+  }
     const bodyContent = JSON.stringify({
       name: userName,
       email: email,
@@ -83,12 +100,8 @@ function SignUp() {
     });
 
     reqOptions.data = bodyContent;
-
-    if (password.length < 8) {
-      alert("Password should contain more than 8 characters.");
-    } else {
       login();
-    }
+    
   };
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
