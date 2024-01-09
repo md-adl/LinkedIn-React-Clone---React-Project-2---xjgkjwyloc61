@@ -45,6 +45,14 @@ const SideBar = () => {
           sx={{ cursor: "pointer" }}>
           {userName}
         </Typography>
+
+        <Typography
+          variant="h6"
+          fontSize="12px"
+          mt="15px"
+          sx={{ cursor: "pointer",paddingLeft:"20px" }}>
+          Full Stack Developer @ Newton School | Core Java
+        </Typography>
         <hr style={{ width: "100%" }} />
         <Box
           display="flex"
