@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import logo from "../images/logo.png";
-import "../styles/App.css";
+import logo from "../../images/logo.png";
+import "../../styles/App.css";
 import {
   Box,
   Button,
@@ -14,7 +14,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useStateProvider } from "../utils/StateProvider";
+import { useStateProvider } from "../../utils/StateProvider";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,10 +1,10 @@
 import React from "react";
-import notification from "../images/notification.png";
+import message from "../../images/message.png";
 
-function Notification() {
+function Message() {
   return (
     <img
-      src={notification}
+      src={message}
       alt="message"
       style={{
         width: "100%",
@@ -14,4 +14,4 @@ function Notification() {
   );
 }
 
-export default Notification;
+export default Message;

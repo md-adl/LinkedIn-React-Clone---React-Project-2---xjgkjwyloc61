@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useStateProvider } from "../utils/StateProvider";
+import { useStateProvider } from "../../utils/StateProvider";
 import { Avatar, Box, Button, Modal, Typography } from "@mui/material";
 import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";

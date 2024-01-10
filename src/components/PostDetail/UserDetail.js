@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useStateProvider } from "../utils/StateProvider";
+import { useStateProvider } from "../../utils/StateProvider";
 import {
   Avatar,
   Box,
@@ -14,8 +14,8 @@ import {
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import MessageIcon from "@mui/icons-material/Message";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SideBar from "./home/SideBar";
-import Postbar from "./home/Postbar";
+import SideBar from "../home/SideBar";
+import Postbar from "../home/Postbar";
 import axios from "axios";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import RefreshIcon from "@mui/icons-material/Refresh";

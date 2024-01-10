@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo2 from "../images/logo2.jpg";
+import logo2 from "../../images/logo2.jpg";
 import {
   Avatar,
   Box,
@@ -21,7 +21,7 @@ import MessageIcon from "@mui/icons-material/Message";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import { useStateProvider } from "../utils/StateProvider";
+import { useStateProvider } from "../../utils/StateProvider";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SensorsIcon from "@mui/icons-material/Sensors";
 

@@ -1,20 +1,20 @@
 import "../styles/App.css";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import SignUp from "./SignUp";
-import SignIn from "./SignIn";
-import Forgot from "./Forgot";
-import NavBar from "./NavBar";
+import SignUp from "./SIgnUpLogin/SignUp";
+import SignIn from "./SIgnUpLogin/SignIn";
+import Forgot from "./SIgnUpLogin/Forgot";
+import NavBar from "./Navigation/NavBar";
 import Home from "./home/Home";
-import Premium from "./Premium";
-import Search from "./Search";
-import UserDetail from "./UserDetail";
-import Details from "./Details";
+import Premium from "./Navigation/Premium";
+import Search from "./Navigation/Search";
+import UserDetail from "./PostDetail/UserDetail";
+import Details from "./PostDetail/Details";
 import Groups from "./Groups";
 import { useStateProvider } from "../utils/StateProvider";
 import { useEffect } from "react";
-import Network from "./Network";
-import Message from "./Message";
-import Notification from "./Notification";
+import Network from "./Navigation/Network";
+import Message from "./Navigation/Message";
+import Notification from "./Navigation/Notification";
 
 function App() {
   const location = useLocation();

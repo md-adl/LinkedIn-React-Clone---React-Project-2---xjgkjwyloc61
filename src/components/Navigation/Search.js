@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useStateProvider } from "../utils/StateProvider";
+import { useStateProvider } from "../../utils/StateProvider";
 import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";

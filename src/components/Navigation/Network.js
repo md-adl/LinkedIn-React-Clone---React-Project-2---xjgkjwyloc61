@@ -1,5 +1,5 @@
 import React from "react";
-import job from "../images/job.png";
+import job from "../../images/job.png";
 
 function Network() {
   return (

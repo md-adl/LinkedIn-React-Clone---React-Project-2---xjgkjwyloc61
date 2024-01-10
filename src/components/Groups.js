@@ -167,7 +167,6 @@ const Groups = () => {
       )
       .then((response) => {
         console.log(response);
-        // dispatch({ type: "SET_GROUP", payload: response.data.data });
         setGroupTitle("");
         setGroupImage(null);
         setGroupDescription("");
