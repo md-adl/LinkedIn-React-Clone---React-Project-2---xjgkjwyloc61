@@ -253,14 +253,14 @@ const PostSection = () => {
                       flexDirection="column"
                       justifyContent="center">
                       <Typography variant="h1" fontSize="15px" ml="7px">
-                        {/* {post?.author?.name} */}
+                        {post?.author?.name}
                       </Typography>
                       <Typography
                         variant="h1"
                         fontSize="13px"
                         ml="7px"
                         color="#979797">
-                        {/* {post.channel.name} */}
+                        {post?.channel?.name}
                       </Typography>
                       <Typography
                         variant="h1"

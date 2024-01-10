@@ -36,10 +36,11 @@ const Details = () => {
           },
         )
         .then((response) => {
+          console.log(response);
           dispatch({ type: "SET_PROFILE", payload: response.data.data });
         });
     } catch {
-      console.log(err);
+    
     }
   }, []);
 
@@ -119,12 +120,14 @@ const Details = () => {
         position="relative"
         sx={{ background: "white" }}
         mt="25px">
-        <img
-          src={profile?.profileImage}
-          width="100%"
-          height="150px"
-          style={{ borderRadius: "12px 12px 0px 0px", objectFit: "cover" }}
-        />
+       {personalDetail.images && personalDetail.images[0] && (
+    <img
+      src={personalDetail.images[0]}
+      width="100%"
+      height="150px"
+      style={{ borderRadius: "12px 12px 0px 0px", objectFit: "cover" }}
+    />
+  )}
         <Avatar
           sx={{
             position: "absolute",
@@ -133,23 +136,16 @@ const Details = () => {
             width: "130px",
             height: "130px",
           }}>
-          <img src={personalDetail.channel.image} />
+          <img src={personalDetail?.author?.profileImage} />
         </Avatar>
 
         <Box display="flex">
           <Box mt="50px" ml="20px" width="70%">
             <Typography fontSize="23px" fontWeight="600" fontFamily="Helvetica">
-              {personalDetail.author.name}
+              {personalDetail?.author?.name}
             </Typography>
             <Typography fontSize="15px" color="#363636" fontFamily="Helvetica">
-              {personalDetail.channel.name}
-            </Typography>
-            <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
-              {profile?.address[0]?.street +
-                " , " +
-                profile?.address[0]?.state +
-                " , " +
-                profile?.address[0]?.country}
+              {personalDetail?.channel?.name}
             </Typography>
             <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
               {(follower = Math.floor(Math.random() * 100) + 1)}
@@ -194,7 +190,7 @@ const Details = () => {
               return (
                 <>
                   <Typography fontSize="15px" fontWeight="600">
-                    {obj.companyName}
+                    {obj?.companyName}
                   </Typography>
                 </>
               );
@@ -213,7 +209,7 @@ const Details = () => {
           About
         </Typography>
         <Typography color="#8d8d8d" p="0px 20px 20px 20px">
-          {personalDetail.content}
+          {personalDetail?.content}
         </Typography>
       </Box>
       <Box
