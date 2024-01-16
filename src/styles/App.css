@@ -115,6 +115,20 @@ input{
   cursor: pointer;
   align-self: center;
 }
+.search{
+  height: 45px !important;
+}
+.newsReaderList {
+  list-style-type: none;
+  margin-left:15px;
+}
+
+/* Optional: Add styling to list items if needed */
+.newsReaderList li {
+  margin-bottom: 8px; 
+  
+  /* Example margin between list items */
+}
 
 @media (max-width:766px){
   .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:last-of-type){

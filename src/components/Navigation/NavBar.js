@@ -117,6 +117,7 @@ const NavBar = () => {
               onClick={() => navigate("/")}
             />
             <ArrowBackIcon
+            className="search"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -155,7 +156,7 @@ const NavBar = () => {
         </>
       ) : (
         <>
-          <Box display="flex" mt="3px" width="28%">
+          <Box display="flex" alignItems="center" width="28%">
             <img
               src={logo2}
               className="linkedInLogo"
@@ -169,11 +170,12 @@ const NavBar = () => {
                 variant="outlined"
                 fullWidth
                 placeholder="Search..."
+                
                 sx={{
-                  height: "45px",
-                  mt: "7px",
-                  ml: "5px",
-
+                  display: "flex",
+                  flexDirection:"row",
+                  height : "50px",
+                  margin: "0px 10px",
                   background: "#edf3f8",
                 }}
                 InputProps={{
@@ -187,6 +189,7 @@ const NavBar = () => {
             ) : (
               <SearchIcon
                 onClick={handleLongInput}
+                className="search"
                 sx={{
                   width: "40px",
                   height: "40px",

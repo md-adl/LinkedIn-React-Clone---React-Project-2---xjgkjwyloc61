@@ -27,7 +27,7 @@ const NewsFeed = () => {
         fontWeight="600">
         LinkedIn News
       </Typography>
-      <ul className="newReaderList">
+      <ol className="newsReaderList">
         <li>IT Deals the recovery parts</li>
         <Typography fontSize="13px" color="gray">
           now
@@ -64,7 +64,7 @@ const NewsFeed = () => {
         <Typography fontSize="13px" color="gray">
           20h ago
         </Typography>
-      </ul>
+      </ol>
     </Box>
   );
 };
