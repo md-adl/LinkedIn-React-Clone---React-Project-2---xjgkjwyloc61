@@ -312,19 +312,7 @@ const Groups = () => {
                   }}>
                   Delete Group
                 </Typography>
-                {/* <Typography
-                  p="18px"
-                  onClick={() => {
-                    setFlag(true);
-                    setGroupPostStore(obj);
-                    openModal();
-                  }}
-                  sx={{
-                    cursor: "pointer",
-                    "&:hover": { background: "lightgray" },
-                  }}>
-                  Edit Group
-                </Typography> */}
+
                 <Typography
                   p="18px"
                   onClick={() => navigate("/")}
