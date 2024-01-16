@@ -19,6 +19,7 @@ function SignUp() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(""); // Added state for custom message
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const navigate = useNavigate();
 
@@ -33,6 +34,7 @@ function SignUp() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
   const projectId = "f104bi07c490";
 
   let headersList = {
@@ -51,8 +53,7 @@ function SignUp() {
       let response = await axios.request(reqOptions);
       console.log(response);
       if (response.status === 201) {
-        console.log(response);
-        alert("SuccessFully SignedUp");
+        setMessage("Successfully Signed Up!"); // Set success message
         setTimeout(() => {
           navigate("/signin");
         }, 2000);
@@ -61,37 +62,39 @@ function SignUp() {
       const errMsg = error?.response?.data?.message;
       console.error(error, errMsg);
       if (errMsg === "User already exists") {
-        alert("User already exist");
+        setMessage("User already exists. Please sign in."); // Set custom message
         navigate("/signin");
       } else if (errMsg === "Invalid input data. A user must have a name") {
-        alert("Invalid input data. A user must have a name");
+        setMessage("Invalid input data. A user must have a name."); // Set custom message
       } else if (
         errMsg === "Invalid input data. Please provide a valid email"
       ) {
-        alert("Invalid input data. Please provide a valid email");
+        setMessage("Invalid input data. Please provide a valid email."); // Set custom message
       } else {
         console.log("error");
       }
     }
   };
+
   const handleSubmit = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Please provide a valid email address.");
-    return;
-  }
+    if (!emailRegex.test(email)) {
+      setMessage("Please provide a valid email address."); // Set custom message
+      return;
+    }
 
-  // Validate name
-  if (userName.trim() === "") {
-    alert("Please enter a valid name.");
-    return;
-  }
+    // Validate name
+    if (userName.trim() === "") {
+      setMessage("Please enter a valid name."); // Set custom message
+      return;
+    }
 
-  // Validate password
-  if (password.length < 8) {
-    alert("Password should contain more than 8 characters.");
-    return;
-  }
+    // Validate password
+    if (password.length < 8) {
+      setMessage("Password should contain more than 8 characters."); // Set custom message
+      return;
+    }
+
     const bodyContent = JSON.stringify({
       name: userName,
       email: email,
@@ -100,9 +103,9 @@ function SignUp() {
     });
 
     reqOptions.data = bodyContent;
-      login();
-    
+    login();
   };
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Box display="flex" justifyContent="center">
@@ -116,6 +119,11 @@ function SignUp() {
         Make the most of your professional life
       </Typography>
       <Box className="signUpBox">
+        {message && (
+          <Typography variant="h6" textAlign="center" color="green" mt="20px">
+            {message}
+          </Typography>
+        )}
         <FormLabel sx={{ mb: "5px" }}>Enter Name</FormLabel>
         <OutlinedInput
           aria-describedby="outlined-weight-helper-text"
@@ -143,7 +151,8 @@ function SignUp() {
               <IconButton
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}
-                edge="end">
+                edge="end"
+              >
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
@@ -157,17 +166,20 @@ function SignUp() {
           textAlign="center"
           width="400px"
           fontSize="11px"
-          mt="20px">
+          mt="20px"
+        >
           By clicking Agree & Join, you agree to the LinkedIn User Agreement,{" "}
           <a
             target="_blank"
-            href="https://www.linkedin.com/legal/privacy-policy?trk=registration-frontend_join-form-privacy-policy">
+            href="https://www.linkedin.com/legal/privacy-policy?trk=registration-frontend_join-form-privacy-policy"
+          >
             Privacy Policy
           </a>
           , and{" "}
           <a
             target="_blank"
-            href="https://www.linkedin.com/legal/cookie-policy?trk=registration-frontend_join-form-cookie-policy">
+            href="https://www.linkedin.com/legal/cookie-policy?trk=registration-frontend_join-form-cookie-policy"
+          >
             Cookie Policy
           </a>
           .
@@ -175,7 +187,8 @@ function SignUp() {
         <Button
           variant="contained"
           sx={{ borderRadius: "30px", mt: "20px", height: "50px" }}
-          onClick={handleSubmit}>
+          onClick={handleSubmit}
+        >
           Agree & Join
         </Button>
         <Typography variant="h4" textAlign="center" fontSize="17px" mt="20px">

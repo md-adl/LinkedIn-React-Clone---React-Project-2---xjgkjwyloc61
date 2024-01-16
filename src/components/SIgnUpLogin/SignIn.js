@@ -21,6 +21,7 @@ function SignIn() {
   const [{ token }, dispatch] = useStateProvider();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(""); 
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -63,29 +64,31 @@ function SignIn() {
         localStorage.setItem("jwtToken", response.data.token);
         localStorage.setItem("userName", response.data.data.name);
         console.log(response.data.token);
+        setMessage("Successfully Signed In!"); // Set success message
         await navigate("/");
       }
     } catch (error) {
       const errMsg = error?.response?.data?.message;
       console.error(error, errMsg);
       if (errMsg === "Incorrect EmailId or Password") {
-        alert("Incorrect EmailId or Password");
+        setMessage("Incorrect EmailId or Password");
       }
     }
   };
 
   const handleLogin = () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Please provide a valid email address.");
-    return;
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage("Please enter a Email.");
+      return;
+    }
 
-  // Validate password
-  if (password.trim() === "") {
-    alert("Please enter a password.");
-    return;
-  }
+    // Validate password
+    if (password.trim() === "") {
+      setMessage("Please enter a password.");
+      return;
+    }
+
     const bodyContent = JSON.stringify({
       email: email,
       password: password,
@@ -96,6 +99,7 @@ function SignIn() {
 
     login();
   };
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -103,6 +107,7 @@ function SignIn() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Box display="flex" justifyContent="center">
@@ -135,7 +140,8 @@ function SignIn() {
               <IconButton
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}
-                edge="end">
+                edge="end"
+              >
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
@@ -144,13 +150,25 @@ function SignIn() {
           onChange={handlePasswordChange}
           label="Password"
           placeholder="password"
-          sx={{ mt: "10px" }}></OutlinedInput>
+          sx={{ mt: "10px" }}
+        ></OutlinedInput>
         <Button
           onClick={handleLogin}
           variant="contained"
-          sx={{ borderRadius: "30px", mt: "20px", height: "50px" }}>
+          sx={{ borderRadius: "30px", mt: "20px", height: "50px" }}
+        >
           Sign In
         </Button>
+        {message && (
+          <Typography
+            variant="h6"
+            textAlign="center"
+            color="green"
+            mt="20px"
+          >
+            {message}
+          </Typography>
+        )}
       </Box>
       <Typography variant="h4" textAlign="center" fontSize="17px" mt="20px">
         New to LinkedIn?

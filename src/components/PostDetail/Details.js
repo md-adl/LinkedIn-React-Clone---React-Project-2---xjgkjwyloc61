@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import SchoolIcon from "@mui/icons-material/School";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import back from '../../images/back.jpg'
 
 const Details = () => {
   const [{ personalDetail, token, profile }, dispatch] = useStateProvider();
@@ -111,21 +112,31 @@ const Details = () => {
 
   return (
     <>
-      <Box
-        width="844px"
-        justifySelf="center"
-        margin="auto"
-        borderRadius="12px"
-        pb="20px"
-        position="relative"
-        sx={{ background: "white" }}
-        mt="25px">
-       {personalDetail.images && personalDetail.images[0] && (
+     <Box
+  width="844px"
+  justifySelf="center"
+  margin="auto"
+  borderRadius="12px"
+  pb="20px"
+  position="relative"
+  sx={{ background: "white" }}
+  mt="25px"
+>
+  {personalDetail.images && personalDetail.images[0] ? (
     <img
       src={personalDetail.images[0]}
       width="100%"
       height="150px"
       style={{ borderRadius: "12px 12px 0px 0px", objectFit: "cover" }}
+      alt="User's Image"
+    />
+  ) : (
+    <img
+      src={back}  // Replace with the path to your static image
+      width="100%"
+      height="150px"
+      style={{ borderRadius: "12px 12px 0px 0px", objectFit: "cover" }}
+      alt="Default Image"
     />
   )}
         <Avatar

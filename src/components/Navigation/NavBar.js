@@ -242,7 +242,7 @@ const NavBar = () => {
                 )}
               </ToggleButton>
               <ToggleButton
-                onClick={() => navigate("/network")}
+                disbaled
                 value="network"
                 display="flex"
                 sx={{ flexDirection: "column", border: "none" }}>
@@ -258,7 +258,7 @@ const NavBar = () => {
               </ToggleButton>
 
               <ToggleButton
-                onClick={() => navigate("/message")}
+               disbaled
                 value="messaging"
                 display="flex"
                 sx={{ flexDirection: "column", border: "none" }}>
@@ -273,7 +273,7 @@ const NavBar = () => {
                 )}
               </ToggleButton>
               <ToggleButton
-                onClick={() => navigate("/notification")}
+               disbaled
                 value="notification"
                 display="flex"
                 sx={{
