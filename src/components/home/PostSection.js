@@ -28,7 +28,7 @@ const PostSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [saveId, setSaveId] = useState("");
   const [commentPost, setCommentPost] = useState({});
-  const [sortByLikes, setSortByLikes] = useState(false);
+  // const [sortByLikes, setSortByLikes] = useState(false);
   
   
 
@@ -65,11 +65,11 @@ const PostSection = () => {
 
   useEffect(() => {
     console.log("posts", posts);
-    if (sortByLikes) {
-      const sortedPosts = [...posts].sort((b, a) => b.likeCount - a.likeCount);
-      dispatch({ type: "SET_POST", payload: sortedPosts });
-    }
-  }, [dispatch, posts, sortByLikes]);
+    // if (sortByLikes) {
+    //   const sortedPosts = [...posts].sort((b, a) => b.likeCount - a.likeCount);
+    //   dispatch({ type: "SET_POST", payload: sortedPosts });
+    // }
+  }, [dispatch, posts]);
   
 
   const handleLike = (post) => {
@@ -93,9 +93,9 @@ const PostSection = () => {
       dispatch({ type: "SET_POST", payload: updatedPosts });
     }
   };
-  const handleSortByLikes = () => {
-    setSortByLikes(!sortByLikes);
-  };
+  // const handleSortByLikes = () => {
+  //   setSortByLikes(!sortByLikes);
+  // };
 
   const handleComment = (event) => {
     const postIndex = posts.findIndex((p) => p._id === commentPost._id);
@@ -227,7 +227,7 @@ const PostSection = () => {
   };
   return (
     <>
-      <button onClick={handleSortByLikes}>Sort By Likes</button>
+      {/* <button onClick={handleSortByLikes}>Sort By Likes</button> */}
       {posts.length != 0 ? (
         <Box display="flex" flexDirection="column">
           {posts

@@ -165,8 +165,7 @@ const Details = () => {
             <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
               {(follower = Math.floor(Math.random() * 100) + 1)}
               {(Connection = Math.floor(Math.random() * 1000) + 1)}
-              {follower + " "} Followers {" " + Connection + " "} Connections hjggfhfh
-              {getCurrentDate()} Hiii
+              {follower + " "} Followers {" " + Connection + " "} 
             </Typography>
             <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
              
