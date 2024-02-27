@@ -19,6 +19,7 @@ const Home = () => {
           "@media (max-width: 664px)": { width: "94%" },
         }}>
         <Postbar />
+        
         <hr style={{ width: "99%", marginTop: "13px", marginBottom: "13px" }} />
         <PostSection />
       </Box>

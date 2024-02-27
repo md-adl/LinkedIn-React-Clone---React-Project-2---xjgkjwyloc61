@@ -19,7 +19,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { v4 as uuidv4 } from "uuid";
 
 const PostSection = () => {
-  const [{ posts, token, ownPost, personalDetail, userName }, dispatch] =
+  const [{ posts, token, ownPost, personalDetail, userName}, dispatch] =
     useStateProvider();
   const navigate = useNavigate();
   const [online, setOnline] = useState(true);
@@ -28,6 +28,9 @@ const PostSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [saveId, setSaveId] = useState("");
   const [commentPost, setCommentPost] = useState({});
+  const [sortByLikes, setSortByLikes] = useState(false);
+  
+  
 
   let followers;
 
@@ -62,7 +65,12 @@ const PostSection = () => {
 
   useEffect(() => {
     console.log("posts", posts);
-  }, [posts]);
+    if (sortByLikes) {
+      const sortedPosts = [...posts].sort((b, a) => b.likeCount - a.likeCount);
+      dispatch({ type: "SET_POST", payload: sortedPosts });
+    }
+  }, [dispatch, posts, sortByLikes]);
+  
 
   const handleLike = (post) => {
     const postIndex = posts.findIndex((p) => p._id === post._id);
@@ -84,6 +92,9 @@ const PostSection = () => {
       localStorage.setItem("posts", JSON.stringify(updatedPosts));
       dispatch({ type: "SET_POST", payload: updatedPosts });
     }
+  };
+  const handleSortByLikes = () => {
+    setSortByLikes(!sortByLikes);
   };
 
   const handleComment = (event) => {
@@ -216,6 +227,7 @@ const PostSection = () => {
   };
   return (
     <>
+      <button onClick={handleSortByLikes}>Sort By Likes</button>
       {posts.length != 0 ? (
         <Box display="flex" flexDirection="column">
           {posts

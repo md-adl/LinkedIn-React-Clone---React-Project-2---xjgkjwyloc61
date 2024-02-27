@@ -38,6 +38,7 @@ const UserDetail = () => {
   const fileInputRef = useRef(null);
   const [resetComment, setResetComment] = useState("");
   const [commentId, setCommentId] = useState(-1);
+  const [sortByLikes, setSortByLikes] = useState(false);
 
   const openModal = (postId) => {
     setAnchorEl(null);
@@ -240,7 +241,9 @@ const UserDetail = () => {
       <Box>
         <SideBar />
       </Box>
-
+      <Box>
+      <button onClick ={()=> setSortByLikes(!sortByLikes)}>Sort By Likes</button>
+      </Box>
       <Box
         width="50%"
         ml="13px"
@@ -262,6 +265,7 @@ const UserDetail = () => {
             "@media(max-width:650px)": { width: "97.4%", ml: "6px" },
           }}
           gap="5px">
+        
           {ownPost?.map((post) => {
             return (
               <Box
@@ -276,6 +280,10 @@ const UserDetail = () => {
                   cursor: "pointer",
                   "@media(max-width:760px)": { pr: "20px" },
                 }}>
+                <Box>
+             
+
+                </Box>
                 <Box display="flex" justifyContent="space-between">
                   <Box display="flex" ml="8px">
                     <Avatar width="50px" height="50px">

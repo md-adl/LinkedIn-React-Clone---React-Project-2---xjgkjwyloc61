@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import SchoolIcon from "@mui/icons-material/School";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-import back from '../../images/back.jpg'
+import back from '../../images/back.jpg';
 
 const Details = () => {
   const [{ personalDetail, token, profile }, dispatch] = useStateProvider();
@@ -19,6 +19,10 @@ const Details = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+ function getCurrentDate(){
+  console.log("Hii")
+  
+ }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -161,8 +165,13 @@ const Details = () => {
             <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
               {(follower = Math.floor(Math.random() * 100) + 1)}
               {(Connection = Math.floor(Math.random() * 1000) + 1)}
-              {follower + " "} Followers {" " + Connection + " "} Connections
+              {follower + " "} Followers {" " + Connection + " "} Connections hjggfhfh
+              {getCurrentDate()} Hiii
             </Typography>
+            <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
+             
+            </Typography>
+
             <Typography fontSize="15px" color="#949494" fontFamily="Helvetica">
               Contact Number : {profile?.phone}
             </Typography>

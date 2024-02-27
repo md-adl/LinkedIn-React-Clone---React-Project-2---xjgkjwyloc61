@@ -63,14 +63,14 @@ const Groups = () => {
   };
 
   const handleCreateGroup = () => {
+    const formData = new FormData();
+    formData.append("name", groupTitle);
+    formData.append("description", groupDescription);
+    formData.append("images", groupImage);
     axios
       .post(
         "https://academics.newtonschool.co/api/v1/linkedin/channel/",
-        {
-          name: groupTitle,
-          description: groupDescription,
-          images: groupImage,
-        },
+        formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
