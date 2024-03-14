@@ -1,5 +1,5 @@
 import React from "react";
-import notification from "../../images/notification.png";
+import notification from "../../images/Notificationimg.jpg";
 
 function Notification() {
   return (

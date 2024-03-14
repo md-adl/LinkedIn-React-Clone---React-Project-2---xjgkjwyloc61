@@ -1,5 +1,5 @@
 import React from "react";
-import message from "../../images/message.png";
+import message from "../../images/message.jpg";
 
 function Message() {
   return (
@@ -9,6 +9,7 @@ function Message() {
       style={{
         width: "100%",
         height: "470px",
+        padding:"20px"
       }}
     />
   );
