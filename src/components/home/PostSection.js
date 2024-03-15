@@ -5,6 +5,7 @@ import {
   Modal,
   TextField,
   Typography,
+  Button
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -19,7 +20,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { v4 as uuidv4 } from "uuid";
 
 const PostSection = () => {
-  const [{ posts, token, ownPost, personalDetail, userName}, dispatch] =
+  const [{ posts, token, ownPost, personalDetail, userName }, dispatch] =
     useStateProvider();
   const navigate = useNavigate();
   const [online, setOnline] = useState(true);
@@ -29,8 +30,6 @@ const PostSection = () => {
   const [saveId, setSaveId] = useState("");
   const [commentPost, setCommentPost] = useState({});
   // const [sortByLikes, setSortByLikes] = useState(false);
-  
-  
 
   let followers;
 
@@ -45,7 +44,7 @@ const PostSection = () => {
             headers: {
               projectId: "f104bi07c490",
             },
-          },
+          }
         )
         .then((response) => {
           // console.log(response.data.data);
@@ -70,7 +69,6 @@ const PostSection = () => {
     //   dispatch({ type: "SET_POST", payload: sortedPosts });
     // }
   }, [dispatch, posts]);
-  
 
   const handleLike = (post) => {
     const postIndex = posts.findIndex((p) => p._id === post._id);
@@ -112,14 +110,14 @@ const PostSection = () => {
         .post(
           `https://academics.newtonschool.co/api/v1/linkedin/comment/${commentPost._id}`,
           bodyContent,
-          { headers: headersList },
+          { headers: headersList }
         )
         .then((response) => {
           console.log("first response", response);
           axios
             .get(
               `https://academics.newtonschool.co/api/v1/linkedin/post/${commentPost._id}/comments`,
-              { headers: headersList },
+              { headers: headersList }
             )
             .then((response) => {
               console.log("response", response);
@@ -170,7 +168,7 @@ const PostSection = () => {
     axios
       .get(
         `https://academics.newtonschool.co/api/v1/linkedin/post/${post._id}/comments`,
-        { headers: headersList },
+        { headers: headersList }
       )
       .then((response) => {
         console.log("response", response);
@@ -210,21 +208,23 @@ const PostSection = () => {
         .patch(
           `https://academics.newtonschool.co/api/v1/linkedin/comment/${commentPost._id}`,
           bodyContent,
-          { headers: headersList },
+          { headers: headersList }
         )
         .then((response) => {
-          console.log("thirs response", response);
-          handleCommentAdd(commentPost);
+          console.log("third response", response);
+          // If the comment is successfully edited, close the modal
+          closeModal();
         })
         .catch((err) => {
           console.log(err);
           if (err.code === "ERR_NETWORK") {
-            alert("Check Your Connenction");
+            alert("Check Your Connection");
           }
         });
       setResetComment("");
     }
   };
+
   return (
     <>
       {/* <button onClick={handleSortByLikes}>Sort By Likes</button> */}
@@ -247,13 +247,15 @@ const PostSection = () => {
                     border: "solid 0.1px rgba(158,164,182,0.3)",
                   }}
                   display="flex"
-                  flexDirection="column">
+                  flexDirection="column"
+                >
                   <Box
                     display="flex"
                     sx={{ cursor: "pointer" }}
                     onClick={() => {
                       handlepersonalDetails(post);
-                    }}>
+                    }}
+                  >
                     <Avatar sx={{ width: "50px", height: "50px", m: "10px" }}>
                       <img
                         src={post?.author?.profileImage}
@@ -263,7 +265,8 @@ const PostSection = () => {
                     <Box
                       display="flex"
                       flexDirection="column"
-                      justifyContent="center">
+                      justifyContent="center"
+                    >
                       <Typography variant="h1" fontSize="15px" ml="7px">
                         {post?.author?.name}
                       </Typography>
@@ -271,14 +274,16 @@ const PostSection = () => {
                         variant="h1"
                         fontSize="13px"
                         ml="7px"
-                        color="#979797">
+                        color="#979797"
+                      >
                         {post?.channel?.name}
                       </Typography>
                       <Typography
                         variant="h1"
                         fontSize="13px"
                         ml="7px"
-                        color="#979797">
+                        color="#979797"
+                      >
                         {followers}
                         Followers
                       </Typography>
@@ -288,7 +293,8 @@ const PostSection = () => {
                     variant="h3"
                     fontSize="16px"
                     color="#979797"
-                    m="10px">
+                    m="10px"
+                  >
                     {post.content}
                   </Typography>
                   <img
@@ -298,7 +304,8 @@ const PostSection = () => {
                   <Box
                     display="flex"
                     justifyContent="space-between"
-                    margin="10px">
+                    margin="10px"
+                  >
                     <Box display="flex">
                       <ThumbUpIcon color="blue" fontSize="13px" />
                       <Typography fontSize="13px" ml="5px">
@@ -315,7 +322,8 @@ const PostSection = () => {
                     display="flex"
                     width="100%"
                     justifyContent="space-between"
-                    mb="10px">
+                    mb="10px"
+                  >
                     <Box
                       display="flex"
                       ml="10px"
@@ -330,11 +338,13 @@ const PostSection = () => {
                         justifyContent: "center",
                         color: post.color,
                         "&:hover": { background: "#f1efef" },
-                      }}>
+                      }}
+                    >
                       <ThumbUpIcon />
                       <Typography
                         ml="5px"
-                        sx={{ "@media(max-width:420px)": { display: "none" } }}>
+                        sx={{ "@media(max-width:420px)": { display: "none" } }}
+                      >
                         Like
                       </Typography>
                     </Box>
@@ -350,11 +360,13 @@ const PostSection = () => {
                         justifyContent: "center",
                         color: "#676767",
                         "&:hover": { background: "#f1efef" },
-                      }}>
+                      }}
+                    >
                       <MessageIcon />
                       <Typography
                         ml="5px"
-                        sx={{ "@media(max-width:420px)": { display: "none" } }}>
+                        sx={{ "@media(max-width:420px)": { display: "none" } }}
+                      >
                         Comment
                       </Typography>
                     </Box>
@@ -403,9 +415,11 @@ const PostSection = () => {
                       alignItems="center"
                       width="100%"
                       gap="5px"
-                      borderBottom="1px solid rgba(0,0,0,0.3)">
+                      borderBottom="1px solid rgba(0,0,0,0.3)"
+                    >
                       <Avatar
-                        sx={{ width: "40px", height: "40px", ml: "10px" }}>
+                        sx={{ width: "40px", height: "40px", ml: "10px" }}
+                      >
                         A
                       </Avatar>
                       <TextField
@@ -437,7 +451,8 @@ const PostSection = () => {
                               height: "40px",
                               background: "#bdbdef",
                               color: "white",
-                            }}>
+                            }}
+                          >
                             A
                           </Avatar>
                           <Typography
@@ -452,7 +467,8 @@ const PostSection = () => {
                             alignItems="center"
                             pl="7px"
                             fontWeight="600"
-                            sx={{ background: "#dcdada" }}>
+                            sx={{ background: "#dcdada" }}
+                          >
                             {obj.content}
                           </Typography>
                           <EditIcon
@@ -479,7 +495,8 @@ const PostSection = () => {
           position="relative"
           display="flex"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <CircularProgress sx={{ width: "100px", height: "100px" }} />
         </Box>
       )}
@@ -500,7 +517,8 @@ const PostSection = () => {
             "@media(max-width:600px)": {
               width: "300px",
             },
-          }}>
+          }}
+        >
           <Box display="flex" alignItems="center" gap="12px">
             <Avatar width="50px" height="50px">
               A
@@ -514,7 +532,7 @@ const PostSection = () => {
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
-                  border: "none", // Remove the border
+                  border: "none", 
                 },
               },
               width: "100%",
