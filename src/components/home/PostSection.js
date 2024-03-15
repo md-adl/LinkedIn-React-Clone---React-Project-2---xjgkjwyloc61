@@ -193,7 +193,6 @@ const PostSection = () => {
     dispatch({ type: "SET_PERSONAL", payload: id });
     navigate("/detail");
   };
-
   const handleEditComment = (event) => {
     if (event.key === "Enter") {
       const bodyContent = {
@@ -203,7 +202,7 @@ const PostSection = () => {
         Authorization: `Bearer ${token}`,
         projectId: "f104bi07c490",
       };
-
+  
       axios
         .patch(
           `https://academics.newtonschool.co/api/v1/linkedin/comment/${commentPost._id}`,
@@ -212,8 +211,42 @@ const PostSection = () => {
         )
         .then((response) => {
           console.log("third response", response);
-          // If the comment is successfully edited, close the modal
+          // Update the comment locally
+          const updatedPosts = [...posts];
+          const updatedPostIndex = updatedPosts.findIndex((p) => p._id === commentPost._id);
+          if (updatedPostIndex !== -1) {
+            const updatedPost = { ...updatedPosts[updatedPostIndex] };
+            const updatedCommentIndex = updatedPost.postComment.findIndex(
+              (comment) => comment._id === commentPost._id
+            );
+            if (updatedCommentIndex !== -1) {
+              updatedPost.postComment[updatedCommentIndex].content = resetComment;
+              updatedPosts[updatedPostIndex] = updatedPost;
+              dispatch({ type: "SET_POST", payload: updatedPosts });
+            }
+          }
+          // Close the modal
           closeModal();
+          // Reset the comment
+          setResetComment("");
+  
+          // Fetch updated posts from the server and update the state
+          axios
+            .get("https://academics.newtonschool.co/api/v1/linkedin/post?limit=98", {
+              headers: {
+                projectId: "f104bi07c490",
+              },
+            })
+            .then((response) => {
+              dispatch({
+                type: "SET_POST",
+                payload: response.data.data,
+              });
+            })
+            .catch((error) => {
+              setOnline(false);
+              console.log(error);
+            });
         })
         .catch((err) => {
           console.log(err);
@@ -221,9 +254,11 @@ const PostSection = () => {
             alert("Check Your Connection");
           }
         });
-      setResetComment("");
     }
   };
+  
+
+  
 
   return (
     <>
