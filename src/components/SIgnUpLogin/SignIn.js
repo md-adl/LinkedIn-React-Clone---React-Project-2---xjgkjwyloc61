@@ -118,7 +118,7 @@ function SignIn() {
         />
       </Box>
 
-      <Box className="signUpBox">
+      <Box className="signUpBox" margin="auto">
         <Typography variant="h4" fontSize="34px" my="10px" fontWeight="600">
           Sign in
         </Typography>
@@ -128,7 +128,8 @@ function SignIn() {
         <OutlinedInput
           aria-describedby="outlined-weight-helper-text"
           placeholder="Email"
-          sx={{ mt: "10px" }}
+          sx={{ mt: "10px"}}
+          margin="auto"
           value={email}
           onChange={handleEmailChange}
         />
