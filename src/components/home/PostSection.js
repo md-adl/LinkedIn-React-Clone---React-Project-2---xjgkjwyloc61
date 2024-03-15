@@ -262,7 +262,6 @@ const PostSection = () => {
 
   return (
     <>
-      {/* <button onClick={handleSortByLikes}>Sort By Likes</button> */}
       {posts.length != 0 ? (
         <Box display="flex" flexDirection="column">
           {posts
