@@ -82,18 +82,17 @@ const NavBar = () => {
   const handleChangeKey = (e) => {
     const searchValue = e.target.value.toLowerCase();
     setSearch(searchValue);
-    const updatedPost1 = posts.filter((post) =>
-      post?.channel?.name.toLowerCase().includes(searchValue),
-    );
-
-    const updatedPost2 = posts.filter((post) =>
-      post?.author?.name.toLowerCase().includes(searchValue),
-    );
-    const result = updatedPost1.concat(updatedPost2);
-    console.log(updatedPost1);
-    console.log(updatedPost2);
-    console.log(result);
-    dispatch({ type: "SET_SEARCH", payload: result });
+  
+    // Filter posts based on channel name, author name, and post content
+    const updatedPosts = posts.filter(post => {
+      const channelNameMatch = post?.channel?.name.toLowerCase().includes(searchValue);
+      const authorNameMatch = post?.author?.name.toLowerCase().includes(searchValue);
+      const postContentMatch = post?.content.toLowerCase().includes(searchValue); // Assuming post content is available in 'content' field
+  
+      return channelNameMatch || authorNameMatch || postContentMatch;
+    });
+  
+    dispatch({ type: "SET_SEARCH", payload: updatedPosts });
     navigate("/search");
   };
 
