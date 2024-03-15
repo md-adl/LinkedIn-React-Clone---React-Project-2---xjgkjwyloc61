@@ -50,16 +50,10 @@ const Search = () => {
                   cursor: "pointer",
                   "&:hover": { background: "#eeeeee" },
                 }}>
-                <img src={post?.channel?.image} width="50px" height="50px" />
+                <img src={post?.author?.profileImage} width="50px" height="50px" />
                 <Box display="flex" flexDirection="column" ml="15px">
-                  <Typography
-                    variant="h5"
-                    color="#7a7aea"
-                    fontSize="20px"
-                    fontWeight="600">
-                    {post?.channel?.name}
-                  </Typography>
                   <Typography fontSize="17px">{post.author.name}</Typography>
+                  <Typography fontSize="17px">{post?.content}</Typography>
                 </Box>
               </Box>
             );
