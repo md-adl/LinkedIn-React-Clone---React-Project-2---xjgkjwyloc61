@@ -18,6 +18,12 @@ body{
   padding: 0;
   background-color: #f3f2f0;
 }
+body, html {
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 .linkedInLogo2{
   width: 150px;

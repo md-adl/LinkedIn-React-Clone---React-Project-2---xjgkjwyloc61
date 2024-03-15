@@ -13,6 +13,7 @@ const Home = () => {
         display="flex"
         flexDirection="column"
         ml={{ xs: "0px", sm: "20px" }}
+        overflowX="hidden"
         sx={{
           "@media (max-width: 864px)": { width: "471px" },
           "@media (max-width: 664px)": { width: "94%" },
